@@ -1,0 +1,178 @@
+<!DOSTYPE html>
+<html>
+   <head>
+     <title>two</title>
+     <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+   <a class="general" href="index.html">На главную</a>
+   <div class='wrap'>
+  <div class='box' data-value='1'></div>
+  <div class='box' data-value='2'></div>
+  <div class='box' data-value='3'></div>
+  <div class='box' data-value='4'></div>
+  <div class='box' data-value='5'></div>
+  <div class='box' data-value='6'></div>
+  <div class='box' data-value='7'></div>
+  <div class='box' data-value='8'></div>
+  <div class='box' data-value='9'></div>
+</div>
+<p>Ходит: <span id='span'>X</span></p>
+<button id='reset'>Сначала</button><br><br>
+<div class='wrap-user'>
+  <p>Выйграл Х: <span id='x'>0</span></p>
+  <p>Выйграл О: <span id='o'>0</span></p>
+  <p>Ничья: <span id='n'>0</span></p>
+</div>
+     <style>
+     body {
+  font-family: sans-serif;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  width: 156px;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  margin-bottom: -1px;
+  margin-left: -1px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.box:hover {
+  background-color: grey;
+}
+
+.wrap-user {
+  width: 156px;
+  border: 1px solid black;
+}
+
+.general {
+  position: absolute;
+  top:; 20px;
+  left: 180px;
+  text-decoration: none;
+}
+
+.general:hover {
+  border-bottom: 1px solid blue;
+}
+     </style>
+     <script>
+     let boxAll = document.querySelectorAll('.box'),
+    span = document.querySelector('#span'),
+    winX = 0,
+    winO = 0,
+    pVinX = document.querySelector('#x'),
+    pVinO = document.querySelector('#o'),
+    n = 0,
+    nch = document.querySelector('#n'),
+    reset = document.querySelector('#reset');
+
+
+for(let i = 0; i < boxAll.length; i++) {
+  boxAll[i].addEventListener('click', function () {
+    n++;
+    
+    if(span.innerHTML === 'X') {
+      this.innerHTML = 'X';
+      span.innerHTML = 'O';
+    } else {
+      this.innerHTML = 'O';
+      span.innerHTML = 'X';
+    } 
+    if(boxAll[0].innerHTML === 'X' && boxAll[1].innerHTML === 'X' && boxAll[2].innerHTML === 'X') {
+      alert('Победил Х!');
+      winX++;
+    } else if (boxAll[0].innerHTML === 'O' && boxAll[1].innerHTML === 'O' && boxAll[2].innerHTML === 'O') {
+      alert('Победил О!');
+      winO++;
+    } 
+ 
+    if(boxAll[3].innerHTML === 'X' && boxAll[4].innerHTML === 'X' && boxAll[5].innerHTML === 'X') {
+      alert('Победил Х!');
+      winX++;
+    } else if (boxAll[3].innerHTML === 'O' && boxAll[4].innerHTML === 'O' && boxAll[5].innerHTML === 'O') {
+      alert('Победил О!');
+      winO++;
+    }
+    
+    if(boxAll[6].innerHTML === 'X' && boxAll[7].innerHTML === 'X' && boxAll[8].innerHTML === 'X') {
+      alert('Победил Х!');
+      winX++;
+    } else if (boxAll[6].innerHTML === 'O' && boxAll[7].innerHTML === 'O' && boxAll[8].innerHTML === 'O') {
+      alert('Победил О!');
+      winO++;
+    }
+    
+    if(boxAll[0].innerHTML === 'X' && boxAll[3].innerHTML === 'X' && boxAll[6].innerHTML === 'X') {
+      alert('Победил Х!');
+      winX++;
+    } else if (boxAll[0].innerHTML === 'O' && boxAll[3].innerHTML === 'O' && boxAll[6].innerHTML === 'O') {
+      alert('Победил О!');
+      winO++;
+    }
+    
+    if(boxAll[1].innerHTML === 'X' && boxAll[4].innerHTML === 'X' && boxAll[7].innerHTML === 'X') {
+      alert('Победил Х!');
+      winX++;
+    } else if (boxAll[1].innerHTML === 'O' && boxAll[4].innerHTML === 'O' && boxAll[7].innerHTML === 'O') {
+      alert('Победил О!');
+      winO++;
+    }
+    
+    if(boxAll[2].innerHTML === 'X' && boxAll[5].innerHTML === 'X' && boxAll[8].innerHTML === 'X') {
+      alert('Победил Х!');
+      winX++;
+    } else if (boxAll[2].innerHTML === 'O' && boxAll[5].innerHTML === 'O' && boxAll[8].innerHTML === 'O') {
+      alert('Победил О!');
+      winO++;
+    }
+    
+    if(boxAll[2].innerHTML === 'X' && boxAll[4].innerHTML === 'X' && boxAll[6].innerHTML === 'X') {
+      alert('Победил Х!');
+      winX++;
+    } else if (boxAll[2].innerHTML === 'O' && boxAll[4].innerHTML === 'O' && boxAll[6].innerHTML === 'O') {
+      alert('Победил О!');
+      winO++;
+    }
+    
+    if(boxAll[0].innerHTML === 'X' && boxAll[4].innerHTML === 'X' && boxAll[8].innerHTML === 'X') {
+      alert('Победил Х!');
+      winX++;
+    } else if (boxAll[0].innerHTML === 'O' && boxAll[4].innerHTML === 'O' && boxAll[8].innerHTML === 'O') {
+      alert('Победил О!');
+      winO++;
+    }
+    if(n === 9) {
+      alert("Ничья!!!!")
+      nch.innerHTML = nch.innerHTML * 1 + 1;
+    }
+    
+    pVinX.innerHTML = pVinX.innerHTML * 1 + winX;
+    pVinO.innerHTML = pVinO.innerHTML * 1 + winO;
+  })
+}
+reset.addEventListener('click', function() {
+  for(let i = 0; i < boxAll.length; i++) {
+    boxAll[i].innerHTML = '';
+    span.innerHTML = 'X';
+    x = '';
+    o = '';
+    n = 0;
+    winX = 0;
+    winO = 0;
+  }
+})
+
+
+     </script>
+   </body>
+</html>
